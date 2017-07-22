@@ -1,9 +1,10 @@
-package com.example.tanmay.vitbot.Entity;
+package com.example.tanmay.vitbot.Entity.ChatHome.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,12 +13,25 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.tanmay.vitbot.Boundary.API.ConnectAPI;
+import com.example.tanmay.vitbot.Entity.Actors.BotResponseModel;
+import com.example.tanmay.vitbot.Entity.ChatHome.Adapter.ChatHomeRecyclerViewAdapter;
 import com.example.tanmay.vitbot.R;
 
+import java.util.List;
+
 public class chat_activity extends AppCompatActivity {
+    ConnectAPI connectAPI;
     RecyclerView chatMessagesRecyclerView;
     EditText chatMessageEditText;
     Button chatMessageSendButton;
+    List<BotResponseModel> botResponseList;
+    String botResponse;
+
+    RecyclerView botMessageRecyclerView;
+    RecyclerView.Adapter botMessageRecyclerViewAdapter;
+    RecyclerView.LayoutManager botMessageRecyclerViewLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +47,17 @@ public class chat_activity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        connectAPI=new ConnectAPI(getApplicationContext());
         chatMessagesRecyclerView=(RecyclerView)findViewById(R.id.chat_activity_recycler_view);
         chatMessageEditText=(EditText)findViewById(R.id.chat_activity_edit_text);
         chatMessageSendButton=(Button)findViewById(R.id.chat_activity_button_send);
+        botMessageRecyclerView=(RecyclerView)findViewById(R.id.chat_activity_recycler_view);
+        botMessageRecyclerViewLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        botMessageRecyclerView.setLayoutManager(botMessageRecyclerViewLayoutManager);
+        //Try this and check its result: botMessageRecyclerView.setHasFixedSize(true);
+        botResponseList=connectAPI.botRequestInitial();
+        botMessageRecyclerViewAdapter=new ChatHomeRecyclerViewAdapter(botResponseList,getApplicationContext());
+        botMessageRecyclerView.setAdapter(botMessageRecyclerViewAdapter);
     }
 
     public void onStart()
@@ -45,7 +66,10 @@ public class chat_activity extends AppCompatActivity {
         chatMessageSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                botResponse=connectAPI.botRequest(chatMessageEditText.getText().toString());
+                botResponseList.add(new BotResponseModel(chatMessageEditText.getText().toString(),"12pm"));
+                botResponseList.add(new BotResponseModel(botResponse,"12pm"));
+                botMessageRecyclerViewAdapter.notifyDataSetChanged();
             }
         });
     }
