@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/VITbot.iml" filepath="$PROJECT_DIR$/VITbot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VITbot Android front-end.iml" filepath="$PROJECT_DIR$/VITbot Android front-end.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

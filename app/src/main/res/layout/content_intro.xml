@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.tanmay.vitbot.Entity.ChatHome.Activity.IntroActivity.IntroActivity"
+    tools:showIn="@layout/activity_intro"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_gravity="top"
+        android:background="#2263b0"
+        android:src="@drawable/intro_screen_pic" />
+    <TextView
+        android:gravity="center"
+        android:textColor="#2263b0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:text="Hi! I'm VIT Bot\nYour personal assistant bot.\nHappy to help you!"/>
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:text="ASK"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/ask_button"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/intro_button_layout"
+        />
+</LinearLayout>

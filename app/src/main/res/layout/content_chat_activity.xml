@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical">
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,15 +18,22 @@
         android:layout_weight=".5">
         <EditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textColorHint="#757575"
+            android:background="#e5e5e5"
             android:id="@+id/chat_activity_edit_text"
-            android:hint="Write something ..."/>
-        <Button
+            android:hint="Ask Something..."
+            android:padding="10dp"/>
+        <ImageButton
+            android:layout_gravity="center"
             android:text="Send"
+            android:background="#e5e5e5"
+            android:padding="5dp"
+            android:src="@drawable/send"
             android:id="@+id/chat_activity_button_send"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

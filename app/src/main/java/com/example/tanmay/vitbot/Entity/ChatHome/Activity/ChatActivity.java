@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.tanmay.vitbot.Boundary.API.ConnectAPI;
 import com.example.tanmay.vitbot.Entity.Actors.BotResponseModel;
@@ -20,11 +21,11 @@ import com.example.tanmay.vitbot.R;
 
 import java.util.List;
 
-public class chat_activity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
     ConnectAPI connectAPI;
     RecyclerView chatMessagesRecyclerView;
     EditText chatMessageEditText;
-    Button chatMessageSendButton;
+    ImageButton chatMessageSendButton;
     List<BotResponseModel> botResponseList;
     String botResponse;
 
@@ -50,14 +51,14 @@ public class chat_activity extends AppCompatActivity {
         connectAPI=new ConnectAPI(getApplicationContext());
         chatMessagesRecyclerView=(RecyclerView)findViewById(R.id.chat_activity_recycler_view);
         chatMessageEditText=(EditText)findViewById(R.id.chat_activity_edit_text);
-        chatMessageSendButton=(Button)findViewById(R.id.chat_activity_button_send);
+        chatMessageSendButton=(ImageButton)findViewById(R.id.chat_activity_button_send);
         botMessageRecyclerView=(RecyclerView)findViewById(R.id.chat_activity_recycler_view);
         botMessageRecyclerViewLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         botMessageRecyclerView.setLayoutManager(botMessageRecyclerViewLayoutManager);
         //Try this and check its result: botMessageRecyclerView.setHasFixedSize(true);
-        botResponseList=connectAPI.botRequestInitial();
-        botMessageRecyclerViewAdapter=new ChatHomeRecyclerViewAdapter(botResponseList,getApplicationContext());
-        botMessageRecyclerView.setAdapter(botMessageRecyclerViewAdapter);
+        //botResponseList=connectAPI.botRequestInitial();
+        //botMessageRecyclerViewAdapter=new ChatHomeRecyclerViewAdapter(botResponseList,getApplicationContext());
+        //botMessageRecyclerView.setAdapter(botMessageRecyclerViewAdapter);
     }
 
     public void onStart()
